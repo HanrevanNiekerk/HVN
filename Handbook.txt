@@ -1,0 +1,63 @@
+🛡️ Project Handbook: HVN System Monitor
+Developer: Hanre van Niekerk
+Tech Stack: Linux (Bash) + Python 3 + Git/GitHub
+Environment: Kali Linux / VM / Win-KeX
+
+1. Executive Summary
+The HVN System Monitor is a professional-grade, lightweight infrastructure tool. 
+It provides a "single-pane-of-glass" view of server health by combining the raw power of Linux shell scripting with the analytical logic of Python.
+Core Philosophy:
+Modular: Scripts are separated into "Collectors" and "Parsers."
+Lightweight: No database required. It runs entirely in memory.
+Secure: Specifically monitors unauthorized access and network vulnerabilities.
+
+2. How the System Works (The "Hybrid" Architecture)
+I chose a Hybrid Approach because it leverages the best features of two different languages.
+Layer A: The Collectors (Bash)
+The "Sensors": These scripts interact directly with the Linux kernel.
+Why Bash? It is the native language of the server. 
+It has the fastest access to tools like top (CPU), df (Disk), and ss (Network).
+
+Layer B: The Parsers (Python)
+The "Brain": These scripts receive raw text from the sensors.
+Why Python? It is better at "thinking." 
+It handles string manipulation and mathematical thresholds (e.g., Is 85% usage too high?) much more accurately than Bash.
+
+3. Key Components (The 4 Pillars)
+Monitor        Tool Used        Business Value
+CPU Usage      top              Prevents server "freezing" by tracking processing load.
+Disk Health    df               Prevents data loss by ensuring storage doesn't hit 100%.
+Network Audit  ss               Security: Detects if a hacker has opened a new port.
+Auth Security  auth.log         Security: Detects Brute-Force login attacks in real-time.
+
+4. Developer Skills & Professional Growth
+By completing this project, I have mastered several high-level developer competencies:
+Systems Integration: Learning how to "pipe" data between different programming languages.
+Version Control (Git): Managing code professionally via GitHub, ensuring the project is backed up and version-tracked.
+Security Mindset: Building tools that don't just track performance, but also look for threats.
+Automation: Reducing 10 minutes of manual server checking into a 1-second command.
+
+5. Live Demonstration Instructions
+To show the system in action, I execute the "Master Runner" script:
+
+Command: ./run-all.sh
+Expected Output:
+Plaintext
+--- HVN SYSTEM STATUS ---
+[OK] CPU Usage: 12.5%
+[OK] Disk Usage: 45%
+[OK] Network Ports Clean
+[CRITICAL] Auth Failures: 12  <-- (This alerts us to action!)
+
+6. Rapid Deployment (Scaleability)
+Tool: setup.sh
+Function: Automates the environment configuration, folder creation, and permissions.
+Benefit: Allows for instant scaling. If the company adds more VMs, the HVN monitor can be deployed to all of them in seconds using a single command.
+
+7. Future Roadmap (The Next Steps)
+This project is built to grow. 
+My next planned upgrades include:
+Automated Email Alerts: 
+Sending an email if a check returns "CRITICAL."
+Visual Logs: Storing history in a text-based log file for weekly audits.
+Dashboard Integration: Exporting data to a web-based view.
